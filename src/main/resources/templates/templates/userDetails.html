@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10 text-center">
+            <form th:action="@{/user/changeDetails}" th:object="${details}" method="post">
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input name="email" type="email" class="form-control" id="email"
+                           th:placeholder="${details.email}"
+                           th:field="*{email}">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Numer telefonu:</label>
+                    <input name="phoneNumber" type="text" class="form-control" id="phoneNumber"
+                           th:placeholder="${details.phoneNumber}"
+                           th:field="*{phoneNumber}">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Miasto:</label>
+                    <input name="city" type="text" class="form-control" id="city"
+                           th:placeholder="${details.city}"
+                           th:field="*{city}">
+                </div>
+
+                <div class="form-group">
+                    <label for="street">Ulica:</label>
+                    <input name="street" type="text" class="form-control" id="street"
+                           th:placeholder="${details.street}"
+                           th:field="*{street}">
+                </div>
+
+                <div class="form-group">
+                    <label for="home">Dom:</label>
+                    <input name="home" type="text" class="form-control" id="home"
+                           th:placeholder="${details.home}"
+                           th:field="*{home}">
+                </div>
+
+                <div class="form-group">
+                    <label for="zipCode">Kod pocztowy:</label>
+                    <input name="zipCode" type="text" class="form-control" id="zipCode"
+                           th:placeholder="${details.zipCode}"
+                           th:field="*{zipCode}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Zaktualizuj</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments::scripts"></div>
+</body>
+
+</html>

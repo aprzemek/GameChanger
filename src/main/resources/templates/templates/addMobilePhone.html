@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <form th:action="@{'/mobile_phone/add?itemId=' + ${item_id}}" th:object="${mobile_phone}" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="name">Nazwa:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="name" th:field="*{name}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="screen_size">Wielkość ekranu:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="screen_size" th:field="*{screenSize}">
+                            <option th:value="4.0">4.0</option>
+                            <option th:value="4.5">4.5</option>
+                            <option th:value="4.7">4.7</option>
+                            <option th:value="5.0">5,0</option>
+                            <option th:value="5.2">5.2</option>
+                            <option th:value="5.5">5.5</option>
+                            <option th:value="5.7">5.7</option>
+                            <option th:value="6.0">6.0</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="processor">Procesor:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="processor" th:field="*{processor}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="ramMb">Ilość pamięci ram:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" type="number" id="ramMb" th:field="*{ramGb}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="simlock">Simlock:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="simlock" th:field="*{simlock}">
+                            <option th:value="'brak'">brak</option>
+                            <option th:value="'orange'">orange</option>
+                            <option th:value="'plus'">plus</option>
+                            <option th:value="'play'">play</option>
+                            <option th:value="'t-mobile'">t-mobile</option>
+                            <option th:value="'inny'">inny</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="color">Kolor:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="color" th:field="*{color}">
+                            <option th:value="czarny">czarny</option>
+                            <option th:value="biały">biały</option>
+                            <option th:value="niebieski">niebieski</option>
+                            <option th:value="żółty">żółty</option>
+                            <option th:value="złoty">złoty</option>
+                            <option th:value="srebrny">srebrny</option>
+                            <option th:value="różowy">różowy</option>
+                            <option th:value="inny">inny</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="isNew">Nowy czy używany?</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="isNew" th:field="*{isNew}">
+                            <option th:value="true">Nowy</option>
+                            <option th:value="false">Używany</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="isWarranty">Czy posiada gwarancję?</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="isWarranty" th:field="*{isWarranty}">
+                            <option th:value="true">Tak</option>
+                            <option th:value="false">Nie</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="warranty">Do kiedy gwarancja?</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="warranty" type="date" th:field="*{warranty}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-5">
+                        <input class="form-control" type="submit" value="Dodaj ogłoszenie">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+<div th:replace="fragments::scripts"></div>
+</body>
+

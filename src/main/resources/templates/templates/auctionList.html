@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <article id="showcase">
+                <div th:each="auction : ${auctionList}">
+
+                    <div th:if="${auction.isAccepted && auction.isAvailable}">
+                        <div>
+                            <div class="card mb-1 border-0 shadow">
+                                <div class="row card-body">
+                                    <div class="col-md-6" th:text="${auction.title}"  th:onclick="'clicked('+'\'/auction/get/'+${auction.id}+'\')'"></div>
+                                    <div class="col-md-2" th:text="${auction.item.estimatedPrice}"></div>
+                                    <div class="col-md-2" th:text="${auction.user.username}"></div>
+                                    <div class="col-md-2" sec:authorize="hasRole('ADMIN')" th:onclick="'clicked('+'\'/auction/lock/'+${auction.id}+'\')'">Zablokuj</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+</section>
+
+<div th:replace="fragments::scripts"></div>
+
+</body>
+</html>

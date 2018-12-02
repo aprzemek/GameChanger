@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: links">
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <h2 class="text-center">FAQ</h2>
+            <div class="accordion mt-3" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                Czy sprzedajecie samochody?
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            Nie, nie sprzedajemy.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Moge zakupic u was zwierzeta?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            Nie.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Czy znajde czesci samochodowe?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            Nie.Nie jestesmy serwisem samochodowym.
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Dlaczego nie moge znalezc talerzy?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                         data-parent="#accordionExample">
+                        <div class="card-body">
+                            Poniewaz nie prowadzimy sprzedazy ich.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments::scripts" style="bottom: auto"></div>
+</body>
+</html>

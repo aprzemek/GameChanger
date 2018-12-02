@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments :: links">
+
+</head>
+
+<body>
+<div th:fragment="header">
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/home}">Barterownia</a>
+        <form class="form-stretched" th:action="@{/auction/list/title}" method="get">
+            <input class="form-control form-control-dark" type="text" name="title" id="title"
+                   placeholder="Wpisz nazwę szukanego przedmiotu"
+                   aria-label="Search">
+        </form>
+        <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary col-sm-3 col-md-1  ml-2 mr-2"
+                data-toggle="modal"
+                data-target="#myModal">
+            ZALOGUJ
+        </button>
+
+        <div class="btn-group" sec:authorize="!isAnonymous()">
+            <button type="button" class="btn btn-primary dropdown-toggle ml-2 mr-2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                Moje konto
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" th:href="@{/user/panel}">MOJE OGŁOSZENIA</a>
+                <a class="dropdown-item" th:onclick="'clicked(\'/auction/add\')'">DODAJ</a>
+                <a class="dropdown-item" th:onclick="'clicked(\'/user/details\')'">DANE</a>
+                <a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:onclick="'clicked(\'/user/findUser\')'">UŻYTKOWNICY</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" th:onclick="'clicked('+'\'/logout\')'">WYLOGUJ</a>
+            </div>
+        </div>
+
+    </nav>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Logowanie</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/user/login}" method="post">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input name="username" type="text" class="form-control" id="username"
+                                   aria-describedby="emailHelp" placeholder="Wpisz nazwe uzytkownika">
+                            <small id="emailHelp" class="form-text text-muted">Na ten mail będziemy Ci wysyłać
+                                spam o nierdzewnych garnkach :)
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Hasło:</label>
+                            <input name="password" type="password" class="form-control" id="password"
+                                   placeholder="Wpisz hasło">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck">
+                            <label class="form-check-label" for="exampleCheck">Zapamiętaj hasło</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Zaloguj</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a th:href="@{/user/register}">
+                        <button type="button" class="btn btn-info align-self-md-end">ZAREJESTRUJ</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

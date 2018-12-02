@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <form th:action="@{'/video_game/add?itemId=' + ${item_id}}" th:object="${video_game}" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="title">Tytuł:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="title" th:field="*{title}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="platform">Platforma:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="platform" th:field="*{platform}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="publisher">Wydawca:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="publisher" th:field="*{publisher}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="genre">Gatunek:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="genre" th:field="*{genre}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="pegi">PEGI:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="pegi" th:field="*{pegi}">
+                            <option th:value="3">3</option>
+                            <option th:value="7">7</option>
+                            <option th:value="12">12</option>
+                            <option th:value="16">16</option>
+                            <option th:value="18">18</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-5">
+                        <input class="form-control" type="submit" value="Dodaj ogłoszenie">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments::scripts"></div>
+</body>
+

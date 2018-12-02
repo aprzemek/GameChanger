@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<head th:replace="fragments :: links">
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <article id="showcase">
+                <form th:action="@{/user/findUser}" th:object="${user}" method="post">
+                    <input type="text" th:field="*{username}">
+                    <button type="submit">Znajdz</button>
+                </form>
+
+                <div th:each="user : ${userList}">
+                    <div class="card mb-1 border-0 shadow">
+                        <div class="row">
+                            <div class="col-md-3" th:text="${user.username}"></div>
+
+                            <div class="col-md-3" th:onclick="'clicked('+'\'/user/makeUser/'+${user.id}+'\')'">
+                                Użytkownik
+                            </div>
+
+                            <div class="col-md-3" th:onclick="'clicked('+'\'/user/makeExpert/'+${user.id}+'\')'">
+                                Rzeczoznawca
+                            </div>
+
+                            <div class="col-md-3" th:onclick="'clicked('+'\'/user/makeAdmin/'+${user.id}+'\')'">
+                                Administrator
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+
+    </div>
+</section>
+
+<div th:replace="fragments::scripts"></div>
+
+</body>
+</html>

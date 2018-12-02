@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <form th:action="@{/auction/add}" th:object="${auction}" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="title">Tytuł aukcji:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="title" th:field="*{title}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="category">Kategoria:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="category" th:field="*{categoryId}">
+                            <option th:each="category : ${categories}"
+                                    th:text="${category.name}"
+                                    th:value="${category.id}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="estimatedPrice">Szacowana wartość:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="estimatedPrice" th:field="*{estimatedPrice}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="description">Opis:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" id="description" th:field="*{description}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="duration">Czas trwania:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="duration" th:field="*{duration}">
+                            <option th:value="3">3</option>
+                            <option th:value="7">7</option>
+                            <option th:value="10">10</option>
+                            <option th:value="14">14</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-5">
+                        <input class="form-control" type="submit" th:value="Dalej">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments::scripts"></div>
+</body>
+
+</html>

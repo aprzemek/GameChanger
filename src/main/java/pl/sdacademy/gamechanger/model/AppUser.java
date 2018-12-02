@@ -19,31 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(of = "id")
-public class AppUser implements UserDetails {
-
-    @Override
-    public String getPassword() { return null;
-    }
-
-    @Override
-    public String getUsername() { return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() { return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() { return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() { return false;
-    }
-
-    @Override
-    public boolean isEnabled() { return false;
-    }
+public class AppUser implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -66,14 +42,14 @@ public class AppUser implements UserDetails {
         this.password = password;
         this.privilege = privilege;
     }
-
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
-        Set <GrantedAuthority> grantedAuthorities = new HashSet<>();
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
-        if (this.getPrivilege()>2){
+        if (this.getPrivilege() > 2) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
+
         if (this.getPrivilege() > 1) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_RZECZOZNAWCA"));
         }
@@ -88,8 +64,25 @@ public class AppUser implements UserDetails {
         }
 
         return grantedAuthorities;
-
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

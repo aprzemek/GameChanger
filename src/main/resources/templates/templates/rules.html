@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10 text-center">
+            <h1><b>Regulamin sklepu internetowego</b></h1>
+
+            <p>1. Ze sklepu internetowego mogą korzystać tylko osoby, które ukończyły 18 lat.</p>
+
+            <p>2. Osoby, które nie ukończyły lat 18 mogą korzystać ze sklepu internetowego za
+                zgodą rodziców bądź opiekunów prawnych.</p>
+
+            <p>3. Osoby rejestrujące się w sklepie internetowym oraz dokonujące tam zakupów
+                podają swoje dane osobowe i wyrażają zgodę na ich przetwarzanie przez LPP na
+                zasadach wskazanych w Polityce prywatności.</p>
+
+            <p>4. W celu potwierdzenia prawidłowości danych podanych podczas rejestracji w
+                sklepie internetowym, klient otrzymuje wiadomość e-mail z prośbą o potwierdzenie
+                danych.</p>
+
+        </div>
+    </div>
+    </div>
+</section>
+<div th:replace="fragments::scripts"></div>
+</body>
+
+</html>

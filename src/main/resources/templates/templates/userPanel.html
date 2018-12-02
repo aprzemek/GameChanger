@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10 text-center">
+
+            <div sec:authorize="hasRole('USER')">
+
+                <button th:onclick="'clicked(\'/auction/add\')'" class="btn btn-primary">Dodaj aukcje</button>
+
+
+                <h2>Moje Aukcje</h2>
+                <div class="row">
+                    <div class="col-md-1">Aktywne</div>
+
+                    <div class="col-md-1">Wymiany</div>
+
+                    <div class="col-md-2">Cena</div>
+
+                    <div class="col-md-5">Tytuł</div>
+
+                    <div class="col-md-3">Data zakończenia</div>
+                </div>
+                <div th:each="auction : ${user.auctions}">
+                    <div class="card mb-1 border-0 shadow">
+                        <div class="row">
+                            <div class="col-md-1" th:if="${auction.isAccepted}"><img src="/img/tick.png" height="30"
+                                                                                     width="30"></div>
+                            <div class="col-md-1" th:if="${!auction.isAccepted}"><img src="/img/cross.png" height="30"
+                                                                                      width="30"></div>
+                            <div class="col-md-1" th:onclick="'clicked('+'\'/auction/offers/'+${auction.id}+'\')'"><img
+                                    src="/img/deal.jpg" height="30" width="30"></div>
+
+                            <div class="col-md-2" th:text="${auction.item.estimatedPrice}"></div>
+
+                            <div class="col-md-5" th:text="${auction.title}"
+                                 th:onclick="'clicked('+'\'/auction/get/'+${auction.id}+'\')'">
+
+                            </div>
+
+                            <div class="col-md-3"
+                                 th:text="${#temporals.format(auction.expirationDate,'dd-MM-yyyy')}"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div sec:authorize="hasRole('RZECZOZNAWCA')">
+                    <h2>Nie zaakceptowane aukcje</h2>
+                    <div class="row">
+                        <div class="col-md-1">Zaakceptuj</div>
+
+
+                        <div class="col-md-1">Cena</div>
+
+                        <div class="col-md-4">Tytuł</div>
+
+                        <div class="col-md-3">Data wystawienia</div>
+
+                        <div class="col-md-3">Data zakończenia</div>
+                    </div>
+                    <div th:each="auction : ${notAcceptedAuctions}">
+                        <div class="card mb-1 border-0 shadow">
+
+                            <div class="row">
+                                <div class="col-md-1" th:if="${!auction.isAccepted}">
+                                    <input type="checkbox"
+                                           th:checked="${auction.isAccepted}"
+                                           th:onclick="'clicked('+'\'/auction/accept/'+${auction.id}+'\')'">
+                                </div>
+
+                                <div class="col-md-1" th:text="${auction.item.estimatedPrice}"></div>
+
+                                <div class="col-md-4" th:text="${auction.title}"
+                                     th:onclick="'clicked('+'\'/auction/get/'+${auction.id}+'\')'"></div>
+
+                                <div class="col-md-3"
+                                     th:text="${#temporals.format(auction.startDate,'dd-MM-yyyy')}"></div>
+
+                                <div class="col-md-3"
+                                     th:text="${#temporals.format(auction.expirationDate,'dd-MM-yyyy')}"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments::scripts"></div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: links">
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10">
+            <form th:action="@{/user/register}" method="post">
+                <div class="form-group">
+                    <label for="username">Nazwa użytkownika:</label>
+                    <input name="username" type="text" class="form-control" id="username"
+                           aria-describedby="emailHelp" placeholder="Wpisz nazwe uzytkownika">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input name="email" type="email" class="form-control" id="email"
+                           placeholder="Wpisz email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Hasło:</label>
+                    <input name="password" type="password" class="form-control" id="password"
+                           placeholder="Wpisz hasło">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Potwierdź hasło:</label>
+                    <input name="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                           placeholder="Potwierdź hasło">
+                </div>
+                <div class="form-group">
+                    <p class="form-inline" style="color: red;" th:text="${failMsg}"></p>
+                </div>
+                <button type="submit" class="btn btn-primary">Zarejestruj</button>
+            </form>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments::scripts" style="bottom: auto"></div>
+
+</body>
+</html>

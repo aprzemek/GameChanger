@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments :: links">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div th:replace="header :: header"></div>
+
+<section id="main">
+    <div class="row content-margin">
+        <div class="col-md-3 col-lg-2">
+            <div th:replace="sidebar::sidebar"></div>
+        </div>
+        <div class="col-md-9 col-lg-10 text-center">
+
+            <div sec:authorize="hasRole('USER')">
+                <h2>Moje Aukcje</h2>
+
+                <div class="row">
+                    <div class="col-md-1">Zaproponuj</div>
+
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-2">Cena</div>
+
+                    <div class="col-md-6">Tytuł</div>
+
+                    <div class="col-md-2">Data zakończenia</div>
+                </div>
+
+                <div th:each="auction : ${auctions}">
+                    <div class="card mb-1 border-0 shadow">
+                        <div class="row" th:if="${auction.isAccepted}">
+                            <div class="col-md-1"
+                                 th:onclick="'clicked('+'\'/auction/makeOffer/'+${offerId}+'/'+${auction.id}+'\')'"><img
+                                    src="/img/tick.png" height="30" width="30"></div>
+
+                            <div class="col-md-1" th:onclick="'clicked('+'\'/auction/offers/'+${auction.id}+'\')'"><img
+                                    src="/img/deal.jpg" height="30" width="30"></div>
+
+                            <div class="col-md-2" th:text="${auction.item.estimatedPrice}"></div>
+
+                            <div class="col-md-6" th:text="${auction.title}"
+                                 th:onclick="'clicked('+'\'/auction/get/'+${auction.id}+'\')'">
+                            </div>
+
+                            <div class="col-md-2"
+                                 th:text="${#temporals.format(auction.expirationDate,'dd-MM-yyyy')}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div th:replace="fragments::scripts"></div>
+</body>
+
+</html>
