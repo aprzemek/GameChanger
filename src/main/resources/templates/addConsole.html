@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="fragments :: links">
     <title>Title</title>
@@ -23,60 +23,6 @@
                     </div>
                     <div class="col-md-9">
                         <input class="form-control" id="name" th:field="*{name}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="screen_size">Wielkość ekranu:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <select class="form-control" id="screen_size" th:field="*{screenSize}">
-                            <option th:value="10.1">10,1</option>
-                            <option th:value="13.3">13,3</option>
-                            <option th:value="14">14</option>
-                            <option th:value="15.6">15,6</option>
-                            <option th:value="17.3">17,3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="processor">Procesor:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" id="processor" th:field="*{processor}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="ramMb">Ilość pamięci ram:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="number" id="ramMb" th:field="*{ramGb}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="hardDriveMb">Wielkość dysku:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" type="number" id="hardDriveMb" th:field="*{hardDriveGb}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="motherboard">Płyta główna:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" id="motherboard" th:field="*{motherboard}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="graphicCard">Karta graficzna:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" id="graphicCard" th:field="*{graphicsCard}">
                     </div>
                 </div>
                 <div class="row">
@@ -120,5 +66,3 @@
 </section>
 <div th:replace="fragments::scripts"></div>
 </body>
-
-</html>

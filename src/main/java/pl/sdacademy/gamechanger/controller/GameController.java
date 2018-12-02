@@ -13,14 +13,14 @@ import pl.sdacademy.gamechanger.service.GameService;
 import pl.sdacademy.gamechanger.service.ItemService;
 
 @Controller
-@RequestMapping(path = "/game")
+@RequestMapping(path = "/game/")
 public class GameController {
 
     @Autowired
     private GameService gameService;
 
     @Autowired
-    ItemService itemService;
+    private ItemService itemService;
 
     @GetMapping(path = "/add")
     public String getAddAuction(

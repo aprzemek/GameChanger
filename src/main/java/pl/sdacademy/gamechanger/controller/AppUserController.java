@@ -59,7 +59,7 @@ public class AppUserController {
         context.setVariable("user", appUserService.findByUsername(newUserDto.getUsername()));
 
         String welcomeMail = templateEngine.process("welcomeMail", context);
-        emailSender.sendEmail(newUserDto.getEmail(), "Witamy w Barterowni!", welcomeMail);
+        emailSender.sendEmail(newUserDto.getEmail(), "Witamy w GAMECHANGER!", welcomeMail);
 
 
         return "redirect:/home?log=true";

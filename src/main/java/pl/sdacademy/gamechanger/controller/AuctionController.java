@@ -3,10 +3,7 @@ package pl.sdacademy.gamechanger.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.gamechanger.model.*;
 import pl.sdacademy.gamechanger.model.dto.NewAuctionDTO;
 import pl.sdacademy.gamechanger.service.*;
@@ -17,13 +14,13 @@ import java.util.Optional;
 import java.util.Set;
 
 @Controller
+@RequestMapping(path = "/auction/")
 public class AuctionController {
     @Autowired
     private AuctionService auctionService;
 
     @Autowired
     private ConsoleService consoleService;
-
 
     @Autowired
     private GameService gameService;

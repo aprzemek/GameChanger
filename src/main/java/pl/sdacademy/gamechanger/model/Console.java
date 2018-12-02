@@ -1,8 +1,6 @@
 package pl.sdacademy.gamechanger.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.sdacademy.gamechanger.model.interfaces.AuctionFields;
 
@@ -15,7 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Entity(name = "console")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Console implements AuctionFields {
@@ -28,10 +27,14 @@ public class Console implements AuctionFields {
     private String platform;
     private Long hardDriveGb;
 
-    @DateTimeFormat(pattern = "yyyy")
+    @DateTimeFormat(pattern = "yyyy-dd-MM")
     private LocalDate dateOfProduction;
     private Boolean isNew;
     private Boolean isWarranty;
+
+    public Console(String name) {
+        this.name = name;
+    }
 
     @Override
     public Map<String,Object> getFieldMap(){

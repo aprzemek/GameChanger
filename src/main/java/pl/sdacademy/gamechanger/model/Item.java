@@ -14,14 +14,14 @@ public class Item  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-private long id;
+    private long id;
 
     private Long itemId;
 
     @ManyToOne
     private Category category;
 
-    private Long estimatedPrice;
+    private long estimatedPrice;
 
 
 

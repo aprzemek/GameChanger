@@ -24,7 +24,10 @@ public class Category {
 
     private String tableName;
 
-
+    public Category(String name, String tableName) {
+        this.name = name;
+        this.tableName = tableName;
+    }
 
 
 }

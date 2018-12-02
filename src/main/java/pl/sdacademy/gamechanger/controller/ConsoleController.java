@@ -13,7 +13,7 @@ import pl.sdacademy.gamechanger.service.ConsoleService;
 import pl.sdacademy.gamechanger.service.ItemService;
 
 @Controller
-@RequestMapping(path = "/console")
+@RequestMapping(path = "/console/")
 public class ConsoleController {
 
     @Autowired

@@ -17,7 +17,7 @@ public class NewConsoleDTO {
     private Long hardDriveGB;
     private String platform;
 
-    @DateTimeFormat(pattern = "yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfProduction;
     private Boolean isNew;
     private Boolean isWarranty;

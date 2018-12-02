@@ -23,7 +23,7 @@ public class GameService {
         return gameRepository.findById(id);
     }
 
-    public List<Game> findVideoGameByTitle(String title) {
+    public List<Game> findGameByTitle(String title) {
         return gameRepository.findAllByTitleContaining(title);
     }
 
@@ -54,25 +54,25 @@ public class GameService {
         gameRepository.deleteById(id);
     }
 
-    public void updateGame(Game videoGame) {
-        Optional<Game> optionalGame = gameRepository.findById((videoGame.getId()));
+    public void updateGame(Game game) {
+        Optional<Game> optionalGame = gameRepository.findById((game.getId()));
 
         if (optionalGame.isPresent()) {
-            Game updatedVideoGame = optionalGame.get();
+            Game updatedGame = optionalGame.get();
 
-            if (videoGame.getTitle() != null) {
-                updatedVideoGame.setTitle(videoGame.getTitle());
+            if (game.getTitle() != null) {
+                updatedGame.setTitle(game.getTitle());
             }
 
 
 
-            if (videoGame.getPlatform() != null) {
-                updatedVideoGame.setPlatform(videoGame.getPlatform());
+            if (game.getPlatform() != null) {
+                updatedGame.setPlatform(game.getPlatform());
             }
 
 
 
-            gameRepository.save(updatedVideoGame);
+            gameRepository.save(updatedGame);
         }
     }
 
