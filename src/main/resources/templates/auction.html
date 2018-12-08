@@ -15,10 +15,10 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
+    <!--<div class="row content-margin">-->
+        <!--<div class="col-md-3 col-lg-2">-->
+            <!--<div th:replace="sidebar::sidebar"></div>-->
+        <!--</div>-->
         <div class="col-md-9 col-lg-10">
             <div class="row moj2">
 
@@ -41,7 +41,7 @@
                 <!--Wartoscia w mapie jest wartosc pola-->
                 <ul>
                     <div class="moj3" style="text-align: left">
-                        <div class="color-palette Parametry" th:text="'Parametry:'"></div>
+                        <div class="color-palette Parametry" th:text="'Oferta:'"></div>
                         <br>
                         <!--Pętla która iteruje po mapie zawierajacej pola-->
                         <div th:each="key: ${fieldMap.keySet()}">
@@ -50,10 +50,10 @@
                                 <!--Wypisanie wartosci z mapy:-->
                                 <!--key - nazwa pola np.'Graphics' potem wstawione '=' potem wartosc z mapy np.'AMD'-->
 
-                                <div class="col-md-4 odstep2" style="color: #333333">
+                                <div class="col-md-4 odstep2" style="color: white">
                                     <span th:text="${key}"></span> :
                                 </div>
-                                <div class="col-md-4 odstep2" style="color: black">
+                                <div class="col-md-4 odstep2" style="color: white">
                                     <span th:text="${fieldMap.get(key).toString()}"></span>
                                 </div>
                             </div>

@@ -41,6 +41,7 @@ public class Console implements AuctionFields {
         Map<String,Object> fieldMap = new HashMap<>();
 
         fieldMap.put("Dysk twardy", hardDriveGb+ " "+"GB");
+        fieldMap.put("Platform",platform);
         fieldMap.put("Data produkcji",dateOfProduction);
         fieldMap.put("Czy jest nowy?",isNew);
         fieldMap.put("Czy ma gwarancje?",isWarranty);

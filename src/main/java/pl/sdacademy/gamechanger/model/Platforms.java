@@ -1,4 +1,8 @@
 package pl.sdacademy.gamechanger.model;
 
-public class Platforms {
+public enum  Platforms {
+
+    PS4, XBOXONE, PS3 ,XBOX360;
+
+
 }

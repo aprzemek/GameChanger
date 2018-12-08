@@ -8,42 +8,126 @@
 </head>
 
 <body>
+
 <div th:fragment="header">
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/home}">GAMECHANGER</a>
-        <form class="form-stretched" th:action="@{/auction/list/title}" method="get">
-            <input class="form-control form-control-dark" type="text" name="title" id="title"
-                   placeholder="Wpisz nazwę szukanego przedmiotu"
-                   aria-label="Search">
-        </form>
-        <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary col-sm-3 col-md-1  ml-2 mr-2"
-                data-toggle="modal"
-                data-target="#myModal">
-            ZALOGUJ
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/home}"><h3>GAMECHANGERS</h3></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="btn-group" sec:authorize="!isAnonymous()">
-            <button type="button" class="btn btn-primary dropdown-toggle ml-2 mr-2" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Moje konto
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" th:href="@{/user/panel}">MOJE OGŁOSZENIA</a>
-                <a class="dropdown-item" th:onclick="'clicked(\'/auction/add\')'">DODAJ</a>
-                <a class="dropdown-item" th:onclick="'clicked(\'/user/details\')'">DANE</a>
-                <a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:onclick="'clicked(\'/user/findUser\')'">UŻYTKOWNICY</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" th:onclick="'clicked('+'\'/logout\')'">WYLOGUJ</a>
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        GRY
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">PS4</a>
+                        <a class="dropdown-item" href="#">XBOX ONE</a>
+                        <a class="dropdown-item" href="#">PS3</a>
+                        <a class="dropdown-item" href="#">XBOX 360</a>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        KONSOLE
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">PS4</a>
+                        <a class="dropdown-item" href="#">XBOX ONE</a>
+                        <a class="dropdown-item" href="#">PS3</a>
+                        <a class="dropdown-item" href="#">XBOX 360</a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        O GAMECHANGERS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/faq}">FAQ</a>
+                        <!--<a class="dropdown-item" href="#">FAQ</a>-->
+                        <a class="dropdown-item" th:href="@{/rules}">REGULAMIN</a>
+                        <!--<a class="dropdown-item" href="#">REGULAMIN</a>-->
+                        <a class="dropdown-item" th:href="@{/contact}">KONTAKT</a>
+                        <!--<a class="dropdown-item" href="#">KONTAKT</a>-->
+            </ul>
+
+
+
+            <!--<ul class="nav nav-down flex-column">-->
+                <!--<li class="nav-item">-->
+                    <!---->
+                    <!--<a class="nav-link" th:href="@{/rules}"> <span data-feather="file-text"></span>REGULAMIN</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="dropdown-item" th:href="@{/contact}">Kontakt</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="dropdown-item" th:href="@{/faq}"><span data-feather="info"></span>FAQ</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+
+
+
+
+
+
+
+
+
+
+
+            <form class="form-inline my-2 my-lg-0" th:action="@{/auction/list/title}" method="get">
+                <input class="form-control mr-sm-2" type="text" name="title" id="title" placeholder="Jakiej gry szukasz?" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SZUKAJ</button> </form>
+
+
+
+            <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary col-sm-3 col-md-1  ml-2 mr-2"
+                    data-toggle="modal" data-target="#myModal"> ZALOGUJ </button>
+
+            <div class="btn-group" sec:authorize="!isAnonymous()">
+                <button type="button" class="btn btn-primary dropdown-toggle ml-2 mr-2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    Moje konto
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" th:href="@{/user/panel}">MOJE OGŁOSZENIA</a>
+                    <a class="dropdown-item" th:onclick="'clicked(\'/auction/add\')'">DODAJ</a>
+                    <a class="dropdown-item" th:onclick="'clicked(\'/user/details\')'">DANE</a>
+                    <a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:onclick="'clicked(\'/user/findUser\')'">UŻYTKOWNICY</a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:onclick="'clicked('+'\'/logout\')'">WYLOGUJ</a>
+                </div>
             </div>
+
+
+            <!--<nav class="navbar navbar-dark bg-dark">-->
+                <!--<form class="form-inline">-->
+
+                    <!--<button sec:authorize="isAnonymous()" class="btn btn-outline-success" type="button">ZALOGUJ SIĘ | ZAREJESTRUJ SIĘ</button>-->
+
+                <!--</form>-->
+            <!--</nav>-->
+
         </div>
+    </nav>
+
+
 
     </nav>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Logowanie</h5>
+                    <h5 class="modal-title" id="myModalLabel"><font color="black">Logowanie</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -69,7 +153,7 @@
                             <label class="form-check-label" for="exampleCheck">Zapamiętaj hasło</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Zaloguj</button>
-                    </form>
+                    </form></font>
                 </div>
                 <div class="modal-footer">
                     <a th:href="@{/user/register}">

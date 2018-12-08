@@ -9,6 +9,7 @@ import pl.sdacademy.gamechanger.model.dto.NewAuctionDTO;
 import pl.sdacademy.gamechanger.service.*;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -85,6 +86,8 @@ public class AuctionController {
 
 
         List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("platforms", Arrays.asList(Platforms.values()));
+        model.addAttribute("durations", Arrays.asList(AuctionDuration.values()));
         model.addAttribute("categories", categories);
         return "addAuction";
     }

@@ -10,10 +10,6 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
         <div class="col-md-9 col-lg-10">
             <form th:action="@{'/game/add?itemId=' + ${item_id}}" th:object="${game}" method="post">
                 <div class="row">
@@ -23,6 +19,23 @@
                     <div class="col-md-9">
                         <input class="form-control" id="title" th:field="*{title}">
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="isNew">Nowy czy używany?</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="isNew" th:field="*{isNew}">
+                            <option th:value="true">Nowy</option>
+                            <option th:value="false">Używany</option>
+                        </select>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Dodaj zdjęcie</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </form>
                 </div>
                 <div class="row">
                     <div class="col-md-offset-3 col-md-5">

@@ -11,10 +11,10 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
+    <!--<div class="row content-margin">-->
+        <!--<div class="col-md-3 col-lg-2">-->
+            <!--<div th:replace="sidebar::sidebar"></div>-->
+        <!--</div>-->
         <div class="col-md-9 col-lg-10">
             <form th:action="@{'/console/add?itemId=' + ${item_id}}" th:object="${console}" method="post">
                 <div class="row">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="dateOfProduction">Data produkcji</label>
+                        <label for="dateOfProduction">Data zakupu</label>
                     </div>
                     <div class="col-md-9">
                         <input class="form-control" id="dateOfProduction" type="date" th:field="*{dateOfProduction}">
@@ -54,6 +54,12 @@
                             <option th:value="false">Nie</option>
                         </select>
                     </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Dodaj zdjęcie</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </form>
                 </div>
                 <div class="row">
                     <div class="col-md-offset-3 col-md-5">

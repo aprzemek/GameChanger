@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ConsoleRepository extends JpaRepository<Console, Long> {
 
-    List<Console> findAllByNameContaining(String name);
+    List<Console> findAllByNameContaining(String title);
 
     List<Console> findAllByHardDriveGbIsBetween(Long min, Long max);
 

@@ -15,6 +15,8 @@ public class NewAuctionDTO {
 
     private Integer duration;
 
+    private String platform;
+
     private long estimatedPrice;
 
     private long categoryId;

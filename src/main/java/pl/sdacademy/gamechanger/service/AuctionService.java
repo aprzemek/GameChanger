@@ -40,6 +40,9 @@ public class AuctionService {
         auction.setIsAvailable(true);
         auction.setDescription(newAuctionDTO.getDescription());
         auction.setTitle(newAuctionDTO.getTitle());
+
+        auction.setPlatform(newAuctionDTO.getPlatform());
+
         auction.setExpirationDate(LocalDateTime.now().plusDays(newAuctionDTO.getDuration()));
         auction.setStartDate(LocalDateTime.now());
         auction.setItem(item);

@@ -12,5 +12,6 @@ public class NewGameDTO {
     private String title;
     private String platform;
     private Boolean isNew;
+    private Boolean isWarranty;
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head th:replace="fragments :: links">
     <title>Title</title>
@@ -10,12 +10,12 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
+    <!--<div class="row content-margin">-->
+        <!--<div class="col-md-3 col-lg-2">-->
+            <!--<div th:replace="sidebar::sidebar"></div>-->
+        <!--</div>-->
         <div class="col-md-9 col-lg-10 text-center">
-            <h1><b>Regulamin sklepu internetowego</b></h1>
+            <h1 align=center><font color="white" ><b>Regulamin sklepu internetowego</b></h1>
 
             <p>1. Ze sklepu internetowego mogą korzystać tylko osoby, które ukończyły 18 lat.</p>
 
@@ -29,7 +29,7 @@
             <p>4. W celu potwierdzenia prawidłowości danych podanych podczas rejestracji w
                 sklepie internetowym, klient otrzymuje wiadomość e-mail z prośbą o potwierdzenie
                 danych.</p>
-
+        </font>
         </div>
     </div>
     </div>

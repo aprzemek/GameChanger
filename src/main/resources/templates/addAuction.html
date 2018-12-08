@@ -11,20 +11,20 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
+    <!--<div class="row content-margin">-->
+        <!--<div class="col-md-3 col-lg-2">-->
+            <!--<div th:replace="sidebar::sidebar"></div>-->
+        <!--</div>-->
         <div class="col-md-9 col-lg-10">
             <form th:action="@{/auction/add}" th:object="${auction}" method="post">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="title">Tytuł aukcji:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" id="title" th:field="*{title}">
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--&lt;!&ndash;<div class="col-md-3">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="title"> Tytuł aukcji:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col-md-9">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input class="form-control" id="title" th:field="*{title}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
                 <div class="row">
                     <div class="col-md-3">
                         <label for="category">Kategoria:</label>
@@ -37,6 +37,7 @@
                         </select>
                     </div>
                 </div>
+                <!---->
                 <div class="row">
                     <div class="col-md-3">
                         <label for="estimatedPrice">Cena:</label>
@@ -45,27 +46,37 @@
                         <input class="form-control" id="estimatedPrice" th:field="*{estimatedPrice}">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="description">Opis:</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input class="form-control" id="description" th:field="*{description}">
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--&lt;!&ndash;<div class="col-md-3">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="description">Opis:</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col-md-9">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input class="form-control" id="description" th:field="*{description}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
                 <div class="row">
                     <div class="col-md-3">
                         <label for="duration">Czas trwania:</label>
                     </div>
                     <div class="col-md-9">
                         <select class="form-control" id="duration" th:field="*{duration}">
-                            <option th:value="3">3</option>
-                            <option th:value="7">7</option>
-                            <option th:value="10">10</option>
-                            <option th:value="14">14</option>
+                            <option th:each="durationX : ${durations}" th:value="${durationX.getDaysCount()}" th:text="${durationX.getDescription()}"></option>
                         </select>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="duration">Platforma:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" id="platform" th:field="*{platform}">
+                            <option th:each="platformX : ${platforms}" th:value="${platformX}" th:text="${platformX}"></option>
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="row">
                     <div class="col-md-offset-3 col-md-5">
                         <input class="form-control" type="submit" th:value="Dalej">

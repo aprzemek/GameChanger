@@ -32,6 +32,8 @@ public class Auction {
 
     private String title;
 
+    private String platform;
+
     @Column(length = 600)
     private String description;
 

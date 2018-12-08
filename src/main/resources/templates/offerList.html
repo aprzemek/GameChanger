@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
 
 <head th:replace="fragments :: links">
     <title>Title</title>
@@ -11,17 +11,14 @@
 <div th:replace="header :: header"></div>
 
 <section id="main">
-    <div class="row content-margin">
-        <div class="col-md-3 col-lg-2">
-            <div th:replace="sidebar::sidebar"></div>
-        </div>
         <div class="col-md-9 col-lg-10 text-center">
 
             <div sec:authorize="hasRole('USER')">
                 <h2>Moje Aukcje</h2>
 
                 <div class="row">
-                    <div class="col-md-1">Zaproponuj</div>
+
+                    <div class="col-md-1">Zaproponuj<div>
 
                     <div class="col-md-1"></div>
 
@@ -50,6 +47,7 @@
 
                             <div class="col-md-2"
                                  th:text="${#temporals.format(auction.expirationDate,'yyyy')}"></div>
+
                         </div>
                     </div>
                 </div>
